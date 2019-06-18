@@ -37,13 +37,15 @@ class Clock extends React.Component {
 
   setAlarmTime = e => {
     e.preventDefault();
-    console.log(`${this.state.alarmHours}:${this.state.alarmMinutes}`);
-    const alarmTime = this.composeAlarmTime(
-      this.state.alarmHours,
-      this.state.alarmMinutes
-    );
-    this.setState({ alarmTime });
-    localStorage.setItem("alarmTime", alarmTime);
+    if (this.state.alarmHours !== "" && this.state.alarmMinutes !== ""){
+        console.log(`${this.state.alarmHours}:${this.state.alarmMinutes}`);
+        const alarmTime = this.composeAlarmTime(
+          this.state.alarmHours,
+          this.state.alarmMinutes
+        );
+        this.setState({ alarmTime, alarmHours: "", alarmMinutes: "", });
+        localStorage.setItem("alarmTime", alarmTime);
+    }
   };
 
   composeAlarmTime = (hours, minutes) => {
@@ -58,6 +60,11 @@ class Clock extends React.Component {
     ).toLocaleTimeString("en-US", { hour12: false });
   };
 
+  removeAlarm = e => {
+      e.preventDefault();
+      this.setState({ alarmTime: "", alarmOn: false });
+  }
+
   snooze = e => {
     e.preventDefault();
     this.setState({
@@ -70,7 +77,7 @@ class Clock extends React.Component {
     this.audio.pause();
   };
 
-  cancelAlarm = () => {
+  setAlarmOff = () => {
     this.setState({ alarmOn: false });
     this.audio.pause();
   };
@@ -105,14 +112,15 @@ class Clock extends React.Component {
           <AlarmSetting alarmTime={this.state.alarmTime} 
                         setHours={this.setHours}
                         setMinutes={this.setMinutes}
-                        setdisabled={this.state.alarmHours === '' || this.state.alarmMinutes === ''}
+                        setdisabled={this.state.alarmHours === "" || this.state.alarmMinutes === ""}
                         setAlarm={this.setAlarmTime}
+                        removeAlarm={this.removeAlarm}
 
           />          
           <Modal open={this.state.alarmOn} size={"small"}>
             <Modal.Content>
               Time to Workiz!
-              <Button size="tiny" color="red" onClick={this.cancelAlarm}>
+              <Button size="tiny" color="red" onClick={this.setAlarmOff}>
                 Cancel
               </Button>
               <Button size="tiny" color="blue" onClick={this.snooze}>

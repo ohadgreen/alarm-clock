@@ -34,8 +34,16 @@ class AlarmSetting extends React.Component {
           color="blue"
           onClick={() => this.setState({ settingModal: true })}
         >
-          Create
+          {alarmIsSet ? 'Update' : 'Create'}
         </Button>
+        {alarmIsSet ? 
+        <Button
+          size="tiny"
+          color="red"
+          onClick={this.props.removeAlarm}
+        >
+          Cancel
+        </Button> : ""}
         <Modal open={this.state.settingModal} size={"small"}>
           <Modal.Content>
             <Modal.Header>Set Alarm</Modal.Header>
@@ -52,7 +60,7 @@ class AlarmSetting extends React.Component {
               options={this.dropDownNumberOptions(59)}
               scrolling
             />
-            <Button size="tiny" color="green" disabled={!this.props.setDisabled} onClick={this.setAlarmAndCloseModal}>
+            <Button size="tiny" color="green" disabled={this.props.setDisabled} onClick={this.setAlarmAndCloseModal}>
               Set
             </Button>
           </form>
