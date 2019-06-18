@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+}
+
+.app-container {
+  display: grid;
+  grid-template-rows: [header] 2fr [clock] 10fr [setup] 6fr [footer] 4fr;
+  grid-template-columns: [left-gutter] 6fr [app-content] 12fr [right-gutter] 6fr;
+  grid-gap: 1rem;
+}
+
+.clock {
+  grid-row: clock;
+  grid-column: app-content;
+  border-radius: 5%;
+  background-color: black;
+  padding: 3%;
+}
+
+.setup {
+  grid-row: setup;
+  grid-column: app-content;
+}

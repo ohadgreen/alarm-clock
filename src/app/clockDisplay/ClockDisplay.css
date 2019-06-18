@@ -1,0 +1,17 @@
+.clock-container {
+    display: grid;
+    grid-template-rows: [clock-area] 1fr;
+    grid-template-columns: [H1] 3fr [H2] 3fr [col1] 1fr [M1] 3fr [M2] 3fr [col2] 1fr [S1] 3fr [S2] 3fr ;
+    grid-gap: 0.8rem;
+    height: 100%;
+    width: 100%;
+}
+
+.H1 { grid-column: H1 }
+.H2 { grid-column: H2 }
+.col1 { grid-column: col1 }
+.M1 { grid-column: M1 }
+.M2 { grid-column: M2 }
+.col2 { grid-column: col2 }
+.S1 { grid-column: S1 }
+.S2 { grid-column: S2 }
