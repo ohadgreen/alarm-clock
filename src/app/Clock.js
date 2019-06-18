@@ -1,10 +1,10 @@
 import React from "react";
-import { Dropdown, Button, Modal } from "semantic-ui-react";
+import { Button, Modal } from "semantic-ui-react";
 import { ClockDisplay } from "./clockDisplay/ClockDisplay";
 import AlarmSetting from './setting/AlarmSetting';
 import "./App.css";
 
-const SNOOZE_MINUTES = 1;
+const SNOOZE_MINUTES = 3;
 const RADIO_URL = "http://streaming.tdiradio.com:8000/house.mp3";
 
 class Clock extends React.Component {
@@ -38,7 +38,7 @@ class Clock extends React.Component {
   setAlarmTime = e => {
     e.preventDefault();
     if (this.state.alarmHours !== "" && this.state.alarmMinutes !== ""){
-        console.log(`${this.state.alarmHours}:${this.state.alarmMinutes}`);
+        // console.log(`${this.state.alarmHours}:${this.state.alarmMinutes}`);
         const alarmTime = this.composeAlarmTime(
           this.state.alarmHours,
           this.state.alarmMinutes
@@ -63,6 +63,7 @@ class Clock extends React.Component {
   removeAlarm = e => {
       e.preventDefault();
       this.setState({ alarmTime: "", alarmOn: false });
+      localStorage.removeItem("alarmTime");
   }
 
   snooze = e => {
@@ -112,20 +113,26 @@ class Clock extends React.Component {
           <AlarmSetting alarmTime={this.state.alarmTime} 
                         setHours={this.setHours}
                         setMinutes={this.setMinutes}
-                        setdisabled={this.state.alarmHours === "" || this.state.alarmMinutes === ""}
+                        setDisabled={this.state.alarmHours === "" || this.state.alarmMinutes === ""}
                         setAlarm={this.setAlarmTime}
                         removeAlarm={this.removeAlarm}
 
           />          
-          <Modal open={this.state.alarmOn} size={"small"}>
+          <Modal open={this.state.alarmOn} size={"tiny"}>
             <Modal.Content>
-              Time to Workiz!
+              <div className="alarm-container">
+                <div className="alarm-header">Time to Workiz!</div>
+                <div className="cancel-alarm-button">
               <Button size="tiny" color="red" onClick={this.setAlarmOff}>
                 Cancel
               </Button>
+              </div>
+              <div className="snooze-alarm-button">
               <Button size="tiny" color="blue" onClick={this.snooze}>
                 Snooze
               </Button>
+              </div>
+              </div>
             </Modal.Content>
           </Modal>
         </div>

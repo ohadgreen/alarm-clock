@@ -1,5 +1,6 @@
 import React from "react";
 import { Dropdown, Button, Modal } from "semantic-ui-react";
+import './AlarmSetting.css';
 
 class AlarmSetting extends React.Component {
   state = {
@@ -34,7 +35,7 @@ class AlarmSetting extends React.Component {
           color="blue"
           onClick={() => this.setState({ settingModal: true })}
         >
-          {alarmIsSet ? 'Update' : 'Create'}
+          {alarmIsSet ? "Update" : "Create"}
         </Button>
         {alarmIsSet ? 
         <Button
@@ -44,26 +45,32 @@ class AlarmSetting extends React.Component {
         >
           Cancel
         </Button> : ""}
-        <Modal open={this.state.settingModal} size={"small"}>
+        <Modal open={this.state.settingModal} size={"tiny"}>
           <Modal.Content>
-            <Modal.Header>Set Alarm</Modal.Header>
-            <form>
+            <div className="alarm-setting-container">
+            <div className="alarm-setting-header">Set Alarm Time:</div>
+            <div className="set-hours-dd">
             <Dropdown
               placeholder={"hours"}
               onChange={this.props.setHours}
               options={this.dropDownNumberOptions(23)}
               scrolling
             />
+            </div>
+            <div className="set-minutes-dd">
             <Dropdown
               placeholder={"minutes"}
               onChange={this.props.setMinutes}
               options={this.dropDownNumberOptions(59)}
               scrolling
             />
+            </div>
+            <div className="alarm-set-button">
             <Button size="tiny" color="green" disabled={this.props.setDisabled} onClick={this.setAlarmAndCloseModal}>
               Set
             </Button>
-          </form>
+            </div>
+            </div>
           </Modal.Content>
         </Modal>
       </div>

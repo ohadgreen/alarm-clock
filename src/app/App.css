@@ -5,7 +5,7 @@
 .app-container {
   display: grid;
   grid-template-rows: [header] 2fr [clock] 10fr [setup] 6fr [footer] 4fr;
-  grid-template-columns: [left-gutter] 6fr [app-content] 12fr [right-gutter] 6fr;
+  grid-template-columns: [left-gutter] 1fr [app-content] 2fr [right-gutter] 1fr;
   grid-gap: 1rem;
 }
 
@@ -20,4 +20,40 @@
 .setup {
   grid-row: setup;
   grid-column: app-content;
+}
+
+.alarm-container {
+  display: grid;
+  grid-template-rows: [alarm-header] 1fr [alarm-action-buttons] 2fr; 
+  grid-template-columns: [cancel-alarm-button] 1fr [snooze-alarm-button] 1fr ;
+  grid-gap: 0.5rem;
+  height: 100%;
+  width: 100%;
+}
+
+.alarm-container > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alarm-header {
+  grid-row: alarm-header;
+  grid-column: 1 / -1;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancel-alarm-button {
+  grid-row: alarm-action-buttons;
+  grid-column: cancel-alarm-button;
+  align-items: center;
+  justify-content: center;
+}
+
+.snooze-alarm-button {
+  grid-row: alarm-action-buttons;
+  grid-column: snooze-alarm-button;
+  align-items: center;
+  justify-content: center;
 }
