@@ -21,6 +21,7 @@ class Clock extends React.Component {
   componentDidMount() {
     this.clock = setInterval(() => this.setCurrentTime(), 1000);
     this.interval = setInterval(() => this.checkAlarmClock(), 1000);
+    // check if alarm was previously set in cache
     this.setState({ alarmTime: localStorage.getItem("alarmTime") });
   }
 
@@ -44,6 +45,7 @@ class Clock extends React.Component {
           this.state.alarmMinutes
         );
         this.setState({ alarmTime, alarmHours: "", alarmMinutes: "", });
+        // set alarm time in cache
         localStorage.setItem("alarmTime", alarmTime);
     }
   };
@@ -84,14 +86,9 @@ class Clock extends React.Component {
   };
 
   checkAlarmClock() {
-    if (this.state.alarmTime === "undefined" || !this.state.alarmTime) {
-      this.alarmMessage = "Pls set your alarm.";
-    } else {
-      this.alarmMessage = "Your alarm is set for " + this.state.alarmTime;
-      if (this.state.currentTime === this.state.alarmTime) {
-        this.setState({ alarmOn: true });
-        this.audio.play();
-      }
+    if (this.state.currentTime === this.state.alarmTime) {
+      this.setState({ alarmOn: true });
+      this.audio.play();
     }
   }
 

@@ -2,8 +2,12 @@ import React from 'react';
 import { digitsDesignMap } from './DigitsDesignMap';
 import './DigitDesign.css';
 
+/*
+digits are designed in pixel-like 5 X 9 bit array in DigitsDesignMap.js file
+the cells background is set black or red according to 0 / 1 in the bit map
+*/
+
 export const Digit = props => {
-    
     const digitMap = digitsDesignMap.filter(d => d.digit === props.digit)[0];
     return (
         <div className="digit-container">                   
