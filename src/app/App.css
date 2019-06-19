@@ -4,8 +4,8 @@
 
 .app-container {
   display: grid;
-  grid-template-rows: [header] 2fr [clock] 10fr [setup] 6fr [footer] 4fr;
-  grid-template-columns: [left-gutter] 1fr [app-content] 2fr [right-gutter] 1fr;
+  grid-template-rows: [header] 4fr [clock] 10fr [setup] 6fr [footer] 4fr;
+  grid-template-columns: [left-gutter] 1fr [app-content] 1fr [right-gutter] 1fr;
   grid-gap: 1rem;
 }
 

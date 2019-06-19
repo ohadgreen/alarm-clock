@@ -43,7 +43,7 @@ class AlarmSetting extends React.Component {
           color="red"
           onClick={this.props.removeAlarm}
         >
-          Cancel
+          Remove
         </Button> : ""}
         <Modal open={this.state.settingModal} size={"tiny"}>
           <Modal.Content>

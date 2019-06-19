@@ -5,6 +5,7 @@ import AlarmSetting from './setting/AlarmSetting';
 import "./App.css";
 
 const SNOOZE_MINUTES = 3;
+const ALARM_MESSAGE = "Time to Workiz!";
 const RADIO_URL = "http://streaming.tdiradio.com:8000/house.mp3";
 
 class Clock extends React.Component {
@@ -118,7 +119,7 @@ class Clock extends React.Component {
           <Modal open={this.state.alarmOn} size={"tiny"}>
             <Modal.Content>
               <div className="alarm-container">
-                <div className="alarm-header">Time to Workiz!</div>
+                <div className="alarm-header">{ALARM_MESSAGE}</div>
                 <div className="cancel-alarm-button">
               <Button size="tiny" color="red" onClick={this.setAlarmOff}>
                 Cancel
