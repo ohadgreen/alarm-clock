@@ -1,3 +1,10 @@
+Alarm clock app, created as a home task for Workiz full-stack position.
+Includes the following features:
+1. Create, update and remove alarm
+2. When alam turned on, it has a cancel and snooze options
+3. Alarm time is persisted in the browser local storage
+4. Clock digits were styled in a pixel-like 9X5 red - black bulbs look
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
