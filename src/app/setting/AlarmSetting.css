@@ -1,0 +1,32 @@
+.alarm-setting-container {
+    display: grid;
+    grid-template-columns: [setting-left-gutter] 1fr [hours-set] 3fr [minutes-set] 3fr [setting-right-getter] 1fr;
+    grid-template-rows: [header-setting] 1fr [time-dd-setting] 3fr [setting-button] 1fr;
+    grid-gap: 0.8rem;
+    height: 100%;
+    width: 100%;
+    }
+
+.alarm-setting-container > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alarm-setting-header {
+    grid-column: 1 / -1;
+    grid-row: header-setting;
+    }
+.set-hours-dd {
+    grid-column: hours-set;
+    grid-row: time-dd-setting;
+}
+.set-minutes-dd {
+    grid-column: minutes-set;
+    grid-row: time-dd-setting;
+}
+.alarm-set-button {
+    grid-column: 1 / -1;
+    grid-row: setting-button;
+}
+
