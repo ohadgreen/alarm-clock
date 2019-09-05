@@ -20,6 +20,7 @@ class Clock extends React.Component {
   audio = new Audio(RADIO_URL);
 
   componentDidMount() {
+    console.log(process.env.REACT_APP_TITLE);
     this.clock = setInterval(() => this.setCurrentTime(), 1000);
     this.interval = setInterval(() => this.checkAlarmClock(), 1000);
     // check if alarm was previously set in cache
