@@ -115,8 +115,7 @@ class Clock extends React.Component {
                         setDisabled={this.state.alarmHours === "" || this.state.alarmMinutes === ""}
                         setAlarm={this.setAlarmTime}
                         removeAlarm={this.removeAlarm}
-
-          />          
+          />
           <Modal open={this.state.alarmOn} size={"tiny"}>
             <Modal.Content>
               <div className="alarm-container">

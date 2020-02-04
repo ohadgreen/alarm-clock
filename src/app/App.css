@@ -4,7 +4,7 @@
 
 .app-container {
   display: grid;
-  grid-template-rows: [header] 4fr [clock] 10fr [setup] 6fr [footer] 4fr;
+  grid-template-rows: [header] 4fr [clock] 14fr [setup] 6fr [footer] 4fr;
   grid-template-columns: [left-gutter] 1fr [app-content] 1fr [right-gutter] 1fr;
   grid-gap: 1rem;
 }
@@ -12,7 +12,7 @@
 .clock {
   grid-row: clock;
   grid-column: app-content;
-  border-radius: 5%;
+  border-radius: 10%;
   background-color: black;
   padding: 3%;
 }
